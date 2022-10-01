@@ -90,18 +90,22 @@ def sort_list():
 def delete_alarm():
     try:
         asd=listbox.curselection()
-        listbox.delete(listbox.curselection())
-        hours.remove(asd)
+        for index in listbox.curselection():
+            hours.remove(listbox.get(index))
+            listbox.delete(asd)
+            print(index)
     except IndexError:
         pass
 
 
 
 hourTime = Entry(root, textvariable=hour, bg="cornflower blue", width=5)
+
 # hourTime.config
 hourTime.grid(row=1, column=1)
 minTime = Entry(root, textvariable=min, bg="cornflower blue", width=5)
 minTime.grid(row=1, column=2)
+
 # minTime.config
 submit = Button(root, text="Set Alarm", fg="red", width=10, command=actual_time)
 submit.grid(row=1, column=3)
